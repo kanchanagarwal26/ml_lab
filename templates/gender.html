@@ -4,77 +4,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="gender.css">
+    <title>Gender Prediction Model</title>
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <h1 class="bg">Gender Prediction Model</h1>
-    <form action='/predict' method="POST">
-        <div>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white shadow-md rounded-lg p-6 max-w-lg w-full">
+        <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Gender Prediction Model</h1>
+        <form action="/predict" method="POST" class="space-y-4">
+            <!-- Long Hair -->
             <div>
-                <label for="1"><b>Long Hair</b></label>
-                <br>
-                <select name="long_hair" id="1" required>
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                </select>
-            </div>
-            <div>
-
-                <label for="2"><b>Forehead Width (cm)</b></label>
-                <br>
-                <input id="2" name="forehead_width_cm" type="text" required>
-
-            </div>
-
-            <div>
-                <label for="3"><b>Forehead Height (cm)</b></label>
-                <br>
-                <input name="hypertforehead_height_cm" id="3" type="text">
-            </div>
-            <div>
-                <label for="5"><b>Is nose wide</b></label>
-                <br>
-                <select name="nose_wide" id="5">
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                </select>
-            </div>
-            <div>
-                <label for="6"><b>Is nose Long</b></label>
-                <br>
-                <select name="nose_long" id="6">
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                </select>
-            </div>
-            <div>
-                <label for="7"><b>Is lips thin</b></label>
-                <br>
-                <select name="lips_thin" id="7">
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                </select>
-            </div>
-            <div>
-                <label for="8"><b>Is distance from nose to lip long</b></label>
-                <br>
-                <select name="distance_nose_to_lip_long" id="8">
+                <label for="1" class="block text-sm font-medium text-gray-700">Long Hair</label>
+                <select name="long_hair" id="1" required
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
                 </select>
             </div>
 
-        </div>
+            <!-- Forehead Width -->
+            <div>
+                <label for="2" class="block text-sm font-medium text-gray-700">Forehead Width (cm)</label>
+                <input id="2" name="forehead_width_cm" type="text" required
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+            </div>
 
-        <div >
-            <button type="submit">Predict Probability</button>
-        </div>
-    </form>
-    <br>
-    <h4><b>{{pred}}</b></h4>
-    <br>
+            <!-- Forehead Height -->
+            <div>
+                <label for="3" class="block text-sm font-medium text-gray-700">Forehead Height (cm)</label>
+                <input name="forehead_height_cm" id="3" type="text"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+            </div>
+
+            <!-- Is Nose Wide -->
+            <div>
+                <label for="5" class="block text-sm font-medium text-gray-700">Is Nose Wide</label>
+                <select name="nose_wide" id="5"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <!-- Is Nose Long -->
+            <div>
+                <label for="6" class="block text-sm font-medium text-gray-700">Is Nose Long</label>
+                <select name="nose_long" id="6"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <!-- Are Lips Thin -->
+            <div>
+                <label for="7" class="block text-sm font-medium text-gray-700">Are Lips Thin</label>
+                <select name="lips_thin" id="7"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <!-- Distance from Nose to Lip -->
+            <div>
+                <label for="8" class="block text-sm font-medium text-gray-700">Is Distance from Nose to Lip Long</label>
+                <select name="distance_nose_to_lip_long" id="8"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <div>
+                <button type="submit"
+                    class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    Predict Probability
+                </button>
+            </div>
+        </form>
+
+        <!-- Prediction Result -->
+        <h4 class="text-center text-lg font-semibold text-gray-800 mt-6">{{pred}}</h4>
+    </div>
 </body>
 
 </html>
