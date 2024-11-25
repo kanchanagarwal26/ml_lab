@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="gender.css">
+</head>
+
+<body>
+    <h1 class="bg">Gender Prediction Model</h1>
+    <form action='/predict' method="POST">
+        <div>
+            <div>
+                <label for="1"><b>Long Hair</b></label>
+                <br>
+                <select name="long_hair" id="1" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div>
+
+                <label for="2"><b>Forehead Width (cm)</b></label>
+                <br>
+                <input id="2" name="forehead_width_cm" type="text" required>
+
+            </div>
+
+            <div>
+                <label for="3"><b>Forehead Height (cm)</b></label>
+                <br>
+                <input name="hypertforehead_height_cm" id="3" type="text">
+            </div>
+            <div>
+                <label for="5"><b>Is nose wide</b></label>
+                <br>
+                <select name="nose_wide" id="5">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div>
+                <label for="6"><b>Is nose Long</b></label>
+                <br>
+                <select name="nose_long" id="6">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div>
+                <label for="7"><b>Is lips thin</b></label>
+                <br>
+                <select name="lips_thin" id="7">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div>
+                <label for="8"><b>Is distance from nose to lip long</b></label>
+                <br>
+                <select name="distance_nose_to_lip_long" id="8">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div >
+            <button type="submit">Predict Probability</button>
+        </div>
+    </form>
+    <br>
+    <h4><b>{{pred}}</b></h4>
+    <br>
+</body>
+
+</html>
